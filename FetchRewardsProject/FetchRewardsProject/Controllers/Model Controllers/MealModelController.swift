@@ -14,7 +14,7 @@ class MealModelController {
     
     static var baseURL = "https://www.themealdb.com/api/json/v1/1/filter.php"
     
-    static func fetchMealList(idMeal: String, completion: @escaping (Result<[MealResults], MealErrors>) -> Void) {
+    static func fetchMealList(idMeal: String, completion: @escaping (Result<[Meals], MealErrors>) -> Void) {
         guard let baseURL = URL(string: baseURL) else { return completion(.failure(.invalidURL)) }
         var components = URLComponents(url: baseURL, resolvingAgainstBaseURL: true)
         let mealIdCategory = URLQueryItem(name: "c", value: idMeal)
