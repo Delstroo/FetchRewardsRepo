@@ -15,10 +15,12 @@
 		FCCCEC4F27BCCCDE00FD98AE /* CategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCCEC4E27BCCCDE00FD98AE /* CategoryModel.swift */; };
 		FCCCEC5127BCCD8F00FD98AE /* MealModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCCEC5027BCCD8F00FD98AE /* MealModel.swift */; };
 		FCCCEC5327BCCE0100FD98AE /* MealDetailsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCCEC5227BCCE0100FD98AE /* MealDetailsModel.swift */; };
-		FCCCEC5527BCD6D900FD98AE /* CategoryModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCCEC5427BCD6D900FD98AE /* CategoryModelController.swift */; };
+		FCCCEC5527BCD6D900FD98AE /* CategoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCCEC5427BCD6D900FD98AE /* CategoryController.swift */; };
 		FCCCEC5827BCD71D00FD98AE /* MealError.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCCEC5727BCD71D00FD98AE /* MealError.swift */; };
-		FCCCEC5A27BCD76A00FD98AE /* MealModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCCEC5927BCD76A00FD98AE /* MealModelController.swift */; };
+		FCCCEC5A27BCD76A00FD98AE /* MealController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCCEC5927BCD76A00FD98AE /* MealController.swift */; };
 		FCCCEC5C27BCD91E00FD98AE /* MealDetailModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCCEC5B27BCD91E00FD98AE /* MealDetailModelController.swift */; };
+		FCD2E77E27C0AEC000A863C7 /* CategoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD2E77D27C0AEC000A863C7 /* CategoryTableViewController.swift */; };
+		FCD2E78027C0B00300A863C7 /* CategoryListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD2E77F27C0B00300A863C7 /* CategoryListTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,10 +34,12 @@
 		FCCCEC4E27BCCCDE00FD98AE /* CategoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryModel.swift; sourceTree = "<group>"; };
 		FCCCEC5027BCCD8F00FD98AE /* MealModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealModel.swift; sourceTree = "<group>"; };
 		FCCCEC5227BCCE0100FD98AE /* MealDetailsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealDetailsModel.swift; sourceTree = "<group>"; };
-		FCCCEC5427BCD6D900FD98AE /* CategoryModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryModelController.swift; sourceTree = "<group>"; };
+		FCCCEC5427BCD6D900FD98AE /* CategoryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryController.swift; sourceTree = "<group>"; };
 		FCCCEC5727BCD71D00FD98AE /* MealError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealError.swift; sourceTree = "<group>"; };
-		FCCCEC5927BCD76A00FD98AE /* MealModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealModelController.swift; sourceTree = "<group>"; };
+		FCCCEC5927BCD76A00FD98AE /* MealController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealController.swift; sourceTree = "<group>"; };
 		FCCCEC5B27BCD91E00FD98AE /* MealDetailModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealDetailModelController.swift; sourceTree = "<group>"; };
+		FCD2E77D27C0AEC000A863C7 /* CategoryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTableViewController.swift; sourceTree = "<group>"; };
+		FCD2E77F27C0B00300A863C7 /* CategoryListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryListTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +112,7 @@
 		FCCCEC4827BCCC9C00FD98AE /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				FCD2E77D27C0AEC000A863C7 /* CategoryTableViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -115,8 +120,8 @@
 		FCCCEC4927BCCCA300FD98AE /* Model Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				FCCCEC5427BCD6D900FD98AE /* CategoryModelController.swift */,
-				FCCCEC5927BCD76A00FD98AE /* MealModelController.swift */,
+				FCCCEC5427BCD6D900FD98AE /* CategoryController.swift */,
+				FCCCEC5927BCD76A00FD98AE /* MealController.swift */,
 				FCCCEC5B27BCD91E00FD98AE /* MealDetailModelController.swift */,
 			);
 			path = "Model Controllers";
@@ -143,6 +148,7 @@
 		FCCCEC4C27BCCCB800FD98AE /* Custom Cells */ = {
 			isa = PBXGroup;
 			children = (
+				FCD2E77F27C0B00300A863C7 /* CategoryListTableViewCell.swift */,
 			);
 			path = "Custom Cells";
 			sourceTree = "<group>";
@@ -228,15 +234,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FCCCEC5A27BCD76A00FD98AE /* MealModelController.swift in Sources */,
+				FCCCEC5A27BCD76A00FD98AE /* MealController.swift in Sources */,
 				FCCCEC3227BCCC5100FD98AE /* AppDelegate.swift in Sources */,
 				FCCCEC4F27BCCCDE00FD98AE /* CategoryModel.swift in Sources */,
 				FCCCEC5127BCCD8F00FD98AE /* MealModel.swift in Sources */,
 				FCCCEC5327BCCE0100FD98AE /* MealDetailsModel.swift in Sources */,
 				FCCCEC5827BCD71D00FD98AE /* MealError.swift in Sources */,
 				FCCCEC5C27BCD91E00FD98AE /* MealDetailModelController.swift in Sources */,
+				FCD2E77E27C0AEC000A863C7 /* CategoryTableViewController.swift in Sources */,
 				FCCCEC3427BCCC5100FD98AE /* SceneDelegate.swift in Sources */,
-				FCCCEC5527BCD6D900FD98AE /* CategoryModelController.swift in Sources */,
+				FCCCEC5527BCD6D900FD98AE /* CategoryController.swift in Sources */,
+				FCD2E78027C0B00300A863C7 /* CategoryListTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

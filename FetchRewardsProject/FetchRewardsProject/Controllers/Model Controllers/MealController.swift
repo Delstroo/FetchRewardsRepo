@@ -1,5 +1,5 @@
 //
-//  MealDetailModelController.swift
+//  MealModelController.swift
 //  FetchRewardsProject
 //
 //  Created by Delstun McCray on 2/15/22.
@@ -8,26 +8,19 @@
 import Foundation
 import UIKit
 
-class MealDetailController {
+class MealController {
     
     static let cache = NSCache<NSString, UIImage>()
     
-    static var baseURL = "https://www.themealdb.com/api/json/v1/1/lookup.php"
+    static var baseURL = "https://www.themealdb.com/api/json/v1/1/filter.php"
     
-    static func fetchMealIngredients(
-        mealID: String,
-        completion: @escaping(Result<[Meal], MealErrors>) -> Void
-    ) {
-        
+    static func fetchMealList(idMeal: String, completion: @escaping (Result<[Meals], MealErrors>) -> Void) {
         guard let baseURL = URL(string: baseURL) else { return completion(.failure(.invalidURL)) }
-        
         var components = URLComponents(url: baseURL, resolvingAgainstBaseURL: true)
-        
-        let mealIdCategory = URLQueryItem(name: "i", value: mealID)
+        let mealIdCategory = URLQueryItem(name: "c", value: idMeal)
         components?.queryItems = [mealIdCategory]
         
-        guard let finalURL = components?.url else { return
-            completion(.failure(.invalidURL)) }
+        guard let finalURL = components?.url else { return completion(.failure(.invalidURL)) }
         print(finalURL)
         
         URLSession.shared.dataTask(with: finalURL) { data, response, error in
@@ -46,13 +39,13 @@ class MealDetailController {
             guard let data = data else { return completion(.failure(.noData))}
             
             do {
-                let topLevelObject = try JSONDecoder().decode(MealResponse.self, from: data)
+                let topLevelObject = try JSONDecoder().decode(MealResults.self, from: data)
                 
-                var arrayOfIngredients: [Meal] = []
+                var arrayOfMeals: [Meals] = []
                 for strMeal in topLevelObject.meals {
-                    arrayOfIngredients.append(strMeal)
+                    arrayOfMeals.append(strMeal)
                 }
-                completion(.success(arrayOfIngredients))
+                completion(.success(arrayOfMeals))
             } catch {
                 print("Error in \(#function) : \(error.localizedDescription) \n---\n \(error)")
                 return completion(.failure(.throwError(error)))
@@ -61,7 +54,7 @@ class MealDetailController {
         
     }//End of func
     
-    static func fetchIngredientsImages(strMeal: String, completion: @escaping (Result<UIImage, MealErrors>) -> Void) {
+    static func fetchMealImages(strMeal: String, completion: @escaping (Result<UIImage, MealErrors>) -> Void) {
         
         guard let baseURL = URL(string: "\(strMeal)") else { return completion(.failure(.invalidURL)) }
         print(baseURL)
@@ -82,4 +75,5 @@ class MealDetailController {
         }.resume()
         
     }//End of func
-}
+    
+}//End of func
