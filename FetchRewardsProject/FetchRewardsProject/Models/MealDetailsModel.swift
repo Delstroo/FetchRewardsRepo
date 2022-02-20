@@ -24,8 +24,8 @@ struct Meal: Decodable {
     let category: String
     let instructions: String
     let thumbnailURL: URL
-    let youtubeURL: URL
-    let sourceURL: URL
+    let youtubeURL: URL?
+    let sourceURL: URL?
     let ingredients: [Ingredient]
     
     private enum PrimaryCodingKeys: String, CodingKey {
@@ -61,8 +61,8 @@ struct Meal: Decodable {
         category = try container.decode(String.self, forKey: .category)
         instructions = try container.decode(String.self, forKey: .instructions)
         thumbnailURL = try container.decode(URL.self, forKey: .thumbnailURL)
-        youtubeURL = try container.decode(URL.self, forKey: .youtubeURL)
-        sourceURL = try container.decode(URL.self, forKey: .sourceURL)
+        youtubeURL = try container.decodeIfPresent(URL.self, forKey: .youtubeURL)
+        sourceURL = try container.decodeIfPresent(URL.self, forKey: .sourceURL)
         
         let dynamic = try decoder.container(keyedBy: DynamicCodingKey.self)
         var ingredients: [Ingredient] = []

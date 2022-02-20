@@ -16,7 +16,7 @@ class MealDetailController {
     
     static func fetchMealIngredients(
         mealID: String,
-        completion: @escaping(Result<[Meal], MealErrors>) -> Void
+        completion: @escaping(Result<Meal, MealError>) -> Void
     ) {
         
         guard let baseURL = URL(string: baseURL) else { return completion(.failure(.invalidURL)) }
@@ -47,12 +47,10 @@ class MealDetailController {
             
             do {
                 let topLevelObject = try JSONDecoder().decode(MealResponse.self, from: data)
+            
+                guard let meal = topLevelObject.meals.first else { return completion(.failure(.noData)) }
                 
-                var arrayOfIngredients: [Meal] = []
-                for strMeal in topLevelObject.meals {
-                    arrayOfIngredients.append(strMeal)
-                }
-                completion(.success(arrayOfIngredients))
+                completion(.success(meal))
             } catch {
                 print("Error in \(#function) : \(error.localizedDescription) \n---\n \(error)")
                 return completion(.failure(.throwError(error)))
@@ -61,7 +59,7 @@ class MealDetailController {
         
     }//End of func
     
-    static func fetchIngredientsImages(strMeal: String, completion: @escaping (Result<UIImage, MealErrors>) -> Void) {
+    static func fetchIngredientsImages(strMeal: String, completion: @escaping (Result<UIImage, MealError>) -> Void) {
         
         guard let baseURL = URL(string: "\(strMeal)") else { return completion(.failure(.invalidURL)) }
         print(baseURL)

@@ -7,13 +7,13 @@
 
 import Foundation
 
-struct MealResults: Decodable {
+struct MealSearchResponse: Decodable {
     
-    let meals: [Meals]
+    let meals: [MealSearchResult]
 
 }// End of struct
 
-struct Meals: Decodable {
+struct MealSearchResult: Decodable {
     
     let name: String
     let thumbnail: String

@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum MealErrors: LocalizedError {
+enum MealError: LocalizedError {
     
     case invalidURL
     case throwError(Error)

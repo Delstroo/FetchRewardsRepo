@@ -14,7 +14,7 @@ class MealController {
     
     static var baseURL = "https://www.themealdb.com/api/json/v1/1/filter.php"
     
-    static func fetchMealList(idMeal: String, completion: @escaping (Result<[Meals], MealErrors>) -> Void) {
+    static func fetchMealList(idMeal: String, completion: @escaping (Result<[MealSearchResult], MealError>) -> Void) {
         guard let baseURL = URL(string: baseURL) else { return completion(.failure(.invalidURL)) }
         var components = URLComponents(url: baseURL, resolvingAgainstBaseURL: true)
         let mealIdCategory = URLQueryItem(name: "c", value: idMeal)
@@ -39,9 +39,9 @@ class MealController {
             guard let data = data else { return completion(.failure(.noData))}
             
             do {
-                let topLevelObject = try JSONDecoder().decode(MealResults.self, from: data)
+                let topLevelObject = try JSONDecoder().decode(MealSearchResponse.self, from: data)
                 
-                var arrayOfMeals: [Meals] = []
+                var arrayOfMeals: [MealSearchResult] = []
                 for strMeal in topLevelObject.meals {
                     arrayOfMeals.append(strMeal)
                 }
@@ -54,7 +54,7 @@ class MealController {
         
     }//End of func
     
-    static func fetchMealImages(strMeal: String, completion: @escaping (Result<UIImage, MealErrors>) -> Void) {
+    static func fetchMealImages(strMeal: String, completion: @escaping (Result<UIImage, MealError>) -> Void) {
         
         guard let baseURL = URL(string: "\(strMeal)") else { return completion(.failure(.invalidURL)) }
         print(baseURL)

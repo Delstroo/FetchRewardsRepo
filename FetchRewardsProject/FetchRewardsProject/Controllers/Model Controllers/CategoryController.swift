@@ -14,7 +14,7 @@ class CategoryController {
     
     static var baseURL = "https://www.themealdb.com/api/json/v1/1/categories.php"
     
-    static func fetchCategoryList(optionID: String, completion: @escaping (Result<[Category], MealErrors>) -> Void) {
+    static func fetchCategoryList(completion: @escaping (Result<[Category], MealError>) -> Void) {
         
         guard let baseURL = URL(string: baseURL) else { return completion(.failure(.invalidURL)) }
         
@@ -56,7 +56,7 @@ class CategoryController {
     
     static func fetchCategoryImages(
         strCategoryThumb: String,
-        completion: @escaping (Result<UIImage, MealErrors>) -> Void
+        completion: @escaping (Result<UIImage, MealError>) -> Void
     ) {
         
         guard let baseURL = URL(string: "\(strCategoryThumb)") else { return completion(.failure(.invalidURL)) }
