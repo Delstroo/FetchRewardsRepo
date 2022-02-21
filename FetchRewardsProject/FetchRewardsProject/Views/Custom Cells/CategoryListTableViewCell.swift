@@ -42,6 +42,7 @@ class CategoryListTableViewCell: UITableViewCell {
                 switch result {
                 case .success(let category):
                     self.mealImageView.image = category
+                    self.mealImageView.layer.cornerRadius = 15
                     self.mealImageView.backgroundColor = UIColor.secondarySystemBackground
                 case .failure(_):
                     self.mealImageView.image = UIImage(systemName: "person")

@@ -15,6 +15,8 @@ class MealInstructionsViewController: UIViewController {
     @IBOutlet var instructionsLabel: UILabel!
     @IBOutlet var sourceLinkLabel: UILabel!
     @IBOutlet var youtubeLinkLabel: UILabel!
+    @IBOutlet var youtubeTutorialLabel: UILabel!
+    @IBOutlet var recipeSourceLabel: UILabel!
     
     //MARK: -  Landing Pad
     var meals: [Meal] = []
@@ -51,19 +53,24 @@ class MealInstructionsViewController: UIViewController {
         
         guard let meal = meal else { return }
         if let youtubeURL = meal.youtubeURL {
-            youtubeLinkLabel.text = "A great tutorial \n\(youtubeURL)"
+            youtubeLinkLabel.text = "\(youtubeURL)"
+            youtubeTutorialLabel.underline()
             
         } else {
             youtubeLinkLabel.text = ""
+            youtubeTutorialLabel.isHidden = true
         }
         
         if let sourceURL = meal.sourceURL {
-            sourceLinkLabel.text = "Our recepie source\n \(sourceURL)"
+            sourceLinkLabel.text = "\(sourceURL)"
+            recipeSourceLabel.underline()
         } else {
             sourceLinkLabel.text = ""
+            recipeSourceLabel.isHidden = true
         }
         
         mealNameLabel.text = meal.name
+        mealNameLabel.underline()
         instructionsLabel.text = meal.instructions
         
         MealDetailController.fetchIngredientsImages(strMeal: "\(meal.thumbnailURL)" ) { result in

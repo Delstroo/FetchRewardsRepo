@@ -17,9 +17,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <searchBar key="tableHeaderView" contentMode="redraw" text="" showsCancelButton="YES" id="rFJ-Sa-chP">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </searchBar>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CategoryListsCell" rowHeight="130" id="2tp-Ur-YFm" customClass="CategoryListTableViewCell" customModule="FetchRewardsProject" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="44.5" width="414" height="130"/>
+                                <rect key="frame" x="0.0" y="88.5" width="414" height="130"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="2tp-Ur-YFm" id="5eK-gf-rG8">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="130"/>
@@ -81,6 +86,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="ZRY-oq-HsS"/>
+                    <connections>
+                        <outlet property="categorySearchBar" destination="rFJ-Sa-chP" id="KPI-xe-xzn"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NfM-FN-aaM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -117,7 +125,7 @@
             </objects>
             <point key="canvasLocation" x="625" y="685"/>
         </scene>
-        <!--Meal Result Collection View Controller-->
+        <!--Title-->
         <scene sceneID="Zyb-hS-hD5">
             <objects>
                 <collectionViewController id="6p0-un-0Gg" customClass="MealResultCollectionViewController" customModule="FetchRewardsProject" customModuleProvider="target" sceneMemberID="viewController">
@@ -176,7 +184,10 @@
                             <outlet property="delegate" destination="6p0-un-0Gg" id="Bg6-7q-lGD"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" id="Pin-Us-HUa"/>
+                    <navigationItem key="navigationItem" title="Title" id="edU-1Q-dDq"/>
+                    <connections>
+                        <outlet property="navigationLabel" destination="edU-1Q-dDq" id="NhF-4T-H94"/>
+                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8QF-Lk-wmV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -299,7 +310,7 @@
                                 <rect key="frame" x="0.0" y="-10" width="414" height="862"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="j6I-Hi-nza">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="447"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="515"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="-23" translatesAutoresizingMaskIntoConstraints="NO" id="SZu-hA-q66">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="219"/>
@@ -326,29 +337,57 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="Tte-pH-MKW">
-                                                <rect key="frame" x="0.0" y="323" width="414" height="124"/>
+                                                <rect key="frame" x="0.0" y="323" width="414" height="192"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Instructions" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="415" translatesAutoresizingMaskIntoConstraints="NO" id="LvZ-cJ-eRP">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="415" translatesAutoresizingMaskIntoConstraints="NO" id="LvZ-cJ-eRP">
                                                         <rect key="frame" x="0.0" y="0.0" width="414" height="23"/>
-                                                        <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="19"/>
-                                                        <nil key="textColor"/>
+                                                        <attributedString key="attributedText">
+                                                            <fragment content="Instructions">
+                                                                <attributes>
+                                                                    <font key="NSFont" metaFont="system" size="19"/>
+                                                                    <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                                </attributes>
+                                                            </fragment>
+                                                        </attributedString>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="iCD-HY-1gs">
-                                                        <rect key="frame" x="0.0" y="63" width="414" height="61"/>
+                                                        <rect key="frame" x="0.0" y="63" width="414" height="129"/>
                                                         <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Youtube Link" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TmS-z9-fL3">
-                                                                <rect key="frame" x="0.0" y="0.0" width="414" height="20.5"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                <nil key="textColor"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Source Link" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uWt-za-fFV">
-                                                                <rect key="frame" x="0.0" y="40.5" width="414" height="20.5"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                <nil key="textColor"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="skm-jS-JN2">
+                                                                <rect key="frame" x="0.0" y="0.0" width="414" height="54.5"/>
+                                                                <subviews>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Here's a great tutorial" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MN8-j0-xFt">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="414" height="24"/>
+                                                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
+                                                                        <nil key="textColor"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Youtube Link" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TmS-z9-fL3">
+                                                                        <rect key="frame" x="0.0" y="34" width="414" height="20.5"/>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                        <color key="textColor" systemColor="linkColor"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                </subviews>
+                                                            </stackView>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="3u2-5j-RyI">
+                                                                <rect key="frame" x="0.0" y="74.5" width="414" height="54.5"/>
+                                                                <subviews>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Our recipe source" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ai6-Nm-8du">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="414" height="24"/>
+                                                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
+                                                                        <nil key="textColor"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Source Link" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uWt-za-fFV">
+                                                                        <rect key="frame" x="0.0" y="34" width="414" height="20.5"/>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                        <color key="textColor" systemColor="linkColor"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                </subviews>
+                                                            </stackView>
                                                         </subviews>
                                                     </stackView>
                                                 </subviews>
@@ -381,8 +420,10 @@
                         <outlet property="instructionsLabel" destination="LvZ-cJ-eRP" id="BF4-gz-Wvd"/>
                         <outlet property="mealImageView" destination="fwQ-gg-m9T" id="Of0-BP-X1s"/>
                         <outlet property="mealNameLabel" destination="ier-tr-Z5m" id="dfo-Et-9JE"/>
+                        <outlet property="recipeSourceLabel" destination="Ai6-Nm-8du" id="jrU-pR-0DU"/>
                         <outlet property="sourceLinkLabel" destination="uWt-za-fFV" id="5Qt-KS-wcH"/>
                         <outlet property="youtubeLinkLabel" destination="TmS-z9-fL3" id="Eaw-iN-dEB"/>
+                        <outlet property="youtubeTutorialLabel" destination="MN8-j0-xFt" id="gNt-EC-Xy2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HTm-YY-eDb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -391,6 +432,9 @@
         </scene>
     </scenes>
     <resources>
+        <systemColor name="linkColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

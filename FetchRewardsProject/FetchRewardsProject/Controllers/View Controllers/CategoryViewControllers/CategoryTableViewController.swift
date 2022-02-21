@@ -9,22 +9,26 @@ import UIKit
 
 class CategoryTableViewController: UITableViewController {
     
+    //MARK: - Outlets
+    @IBOutlet var categorySearchBar: UISearchBar!
     
     //MARK: - Landing Pads
     var categories: [Category] = []
-    var filteredCategories: [Category] = []
     
     //MARK: - Life Cycles
     override func viewDidLoad() {
         super.viewDidLoad()
         updateViews()
+        categorySearchBar.delegate = self
+        hideKeyboardWhenTappedAround()
         fetchCategories()
-    }
+    }//End of func
     
     //MARK: - Helper Functions
     
     func updateViews() {
         tableView.reloadData()
+        
     }//End of func
     
     func fetchCategories() {
@@ -34,7 +38,6 @@ class CategoryTableViewController: UITableViewController {
                 switch result {
                 case .success(let category):
                     self.categories = category
-                    self.filteredCategories = category
                     self.updateViews()
                 case .failure(let error):
                     print("Error in \(#function) : \(error.localizedDescription) \n---\n \(error)")
@@ -42,6 +45,11 @@ class CategoryTableViewController: UITableViewController {
             }
         }
     }//End of func
+    
+func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+    categorySearchBar.endEditing(true)
+    
+}//End of func
     
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -57,7 +65,6 @@ class CategoryTableViewController: UITableViewController {
         cell.delegate = self
         
         return cell
-        
     }//End of func
     
     // MARK: - Navigation
@@ -72,8 +79,38 @@ class CategoryTableViewController: UITableViewController {
             destination.category = selectedCategory
         }
     }//End of func
-    
 }//End of class
+
+//MARK: - Extensions
+extension CategoryTableViewController: UISearchBarDelegate {
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        
+        guard let searchTerm = searchBar.text, !searchTerm.isEmpty else {
+            self.tableView.reloadData()
+            return }
+        
+        let filteredfoodOptions = categories.filter {
+            
+            $0.name.localizedCaseInsensitiveContains(searchTerm)
+            
+        }
+        self.categories = filteredfoodOptions
+        self.tableView.reloadData()
+    }//End of func
+}//End of extension
+
+extension UITableViewController {
+    func hideKeyboardWhenTappedAround() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(UITableViewController.dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }//End of func
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }//End of func
+}//End of extension
 
 extension CategoryTableViewController: CategoryListTableViewCellDelegate {
     

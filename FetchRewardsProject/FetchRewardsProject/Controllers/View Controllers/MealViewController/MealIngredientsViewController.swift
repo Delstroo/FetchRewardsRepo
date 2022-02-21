@@ -41,6 +41,7 @@ class MealIngredientsViewController: UIViewController, UITableViewDelegate, UITa
                 switch result {
                 case .success(let meal):
                     self.mealImageView.image = meal
+                    self.mealImageView.layer.cornerRadius = 15
                 case .failure(let error):
                     print("Error in \(#function) : \(error.localizedDescription) \n---\n \(error)")
                 }

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		FC950DB727C1EBFD00BD09FC /* MealInstructionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC950DB627C1EBFD00BD09FC /* MealInstructionsViewController.swift */; };
+		FCA4AD3227C2174A003C3492 /* UnderlineStringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA4AD3127C2174A003C3492 /* UnderlineStringExtension.swift */; };
 		FCCCEC3227BCCC5100FD98AE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCCEC3127BCCC5100FD98AE /* AppDelegate.swift */; };
 		FCCCEC3427BCCC5100FD98AE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCCEC3327BCCC5100FD98AE /* SceneDelegate.swift */; };
 		FCCCEC3927BCCC5100FD98AE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FCCCEC3727BCCC5100FD98AE /* Main.storyboard */; };
@@ -30,6 +31,7 @@
 
 /* Begin PBXFileReference section */
 		FC950DB627C1EBFD00BD09FC /* MealInstructionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealInstructionsViewController.swift; sourceTree = "<group>"; };
+		FCA4AD3127C2174A003C3492 /* UnderlineStringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderlineStringExtension.swift; sourceTree = "<group>"; };
 		FCCCEC2E27BCCC5100FD98AE /* FetchRewardsProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FetchRewardsProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FCCCEC3127BCCC5100FD98AE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FCCCEC3327BCCC5100FD98AE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -85,7 +87,7 @@
 				FCCCEC4A27BCCCAA00FD98AE /* Views */,
 				FCCCEC4D27BCCCC800FD98AE /* Models */,
 				FCCCEC4727BCCC9600FD98AE /* Controllers */,
-				FCCCEC4627BCCC8F00FD98AE /* Extensions */,
+				FCCCEC4627BCCC8F00FD98AE /* Extensions+Helper */,
 				FCCCEC4527BCCC8000FD98AE /* Resources */,
 			);
 			path = FetchRewardsProject;
@@ -102,12 +104,13 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		FCCCEC4627BCCC8F00FD98AE /* Extensions */ = {
+		FCCCEC4627BCCC8F00FD98AE /* Extensions+Helper */ = {
 			isa = PBXGroup;
 			children = (
 				FCCCEC5727BCD71D00FD98AE /* MealError.swift */,
+				FCA4AD3127C2174A003C3492 /* UnderlineStringExtension.swift */,
 			);
-			path = Extensions;
+			path = "Extensions+Helper";
 			sourceTree = "<group>";
 		};
 		FCCCEC4727BCCC9600FD98AE /* Controllers */ = {
@@ -266,6 +269,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FCCCEC5A27BCD76A00FD98AE /* MealController.swift in Sources */,
+				FCA4AD3227C2174A003C3492 /* UnderlineStringExtension.swift in Sources */,
 				FCCCEC3227BCCC5100FD98AE /* AppDelegate.swift in Sources */,
 				FC950DB727C1EBFD00BD09FC /* MealInstructionsViewController.swift in Sources */,
 				FCCCEC4F27BCCCDE00FD98AE /* CategoryModel.swift in Sources */,

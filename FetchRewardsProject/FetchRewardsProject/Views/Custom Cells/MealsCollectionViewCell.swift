@@ -36,6 +36,7 @@ class MealsCollectionViewCell: UICollectionViewCell {
                 switch result {
                 case .success(let thumbnail):
                     self.mealImageView.image = thumbnail
+                    self.mealImageView.layer.cornerRadius = 15
                 case .failure(_):
                     self.mealImageView.image = UIImage(named: "person")
                 }

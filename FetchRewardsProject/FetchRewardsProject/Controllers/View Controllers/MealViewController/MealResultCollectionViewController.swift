@@ -11,6 +11,10 @@ private let reuseIdentifier = "mealSearchCell"
 
 class MealResultCollectionViewController: UICollectionViewController {
 
+    //MARK: - Outlets
+    @IBOutlet var navigationLabel: UINavigationItem!
+    
+    //MARK: - LandingPads
     var mealSearchResult: MealSearchResult?
     var mealsArray: [MealSearchResult] = []
     var category: Category?
@@ -19,12 +23,14 @@ class MealResultCollectionViewController: UICollectionViewController {
         super.viewDidLoad()
         updateViews()
         fetchAllResults()
+
     }
     
     //MARK: - Helper Funcs
     
     func updateViews() {
         collectionView.reloadData()
+        navigationLabel.title = category?.name
     }//End of func
     
     func fetchAllResults() {
