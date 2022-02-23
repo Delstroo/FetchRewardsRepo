@@ -8,30 +8,36 @@
 import UIKit
 
 class CategoryDescriptionViewController: UIViewController {
+    // MARK: - Outlets
 
-    //MARK: - Outlets
-    @IBOutlet var descriptionLabel: UILabel!
+    @IBOutlet var categoryDescriptionLabel: UILabel!
+    @IBOutlet var categoryNameLabel: UILabel!
     
-    //MARK: - Landing Pads
+    // MARK: - Landing Pads
+
     var category: Category?
-    
-    //MARK: - Life Cycles
+
+    // MARK: - Life Cycles
+
     override func viewDidLoad() {
         super.viewDidLoad()
         updateViews()
-//        view.backgroundColor = UIColor.clear
-    }//End of func
-    
-    //MARK: - Helper Funcs
+    } // End of func
+
+    // MARK: - Helper Funcs
+
     func updateViews() {
         guard let category = category else { return }
-        descriptionLabel.text = category.description
+        categoryDescriptionLabel.text = category.description
+        categoryNameLabel.text = category.name
+        categoryNameLabel.underline()
+        view.backgroundColor = UIColor.clear
 
-        //MARK: - Blur Effect
+        // Blur Effect
+
         let blurEffect = UIBlurEffect(style: .regular)
         let blurEffectView = UIVisualEffectView(effect: blurEffect)
-        blurEffectView.frame = self.view.frame
+        blurEffectView.frame = view.frame
         view.insertSubview(blurEffectView, at: 0)
-    }//End of func
-
-}//End of class
+    } // End of func
+} // End of class

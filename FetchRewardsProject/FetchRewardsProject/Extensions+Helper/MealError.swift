@@ -8,12 +8,11 @@
 import Foundation
 
 enum MealError: LocalizedError {
-    
     case invalidURL
     case throwError(Error)
     case noData
     case unableToDecode
-    
+
     var errorDescription: String {
         switch self {
         case .invalidURL:
@@ -26,4 +25,4 @@ enum MealError: LocalizedError {
             return "there was no data found."
         }
     }
-}//end of enum
+} // end of enum

@@ -23,7 +23,7 @@
                             <textInputTraits key="textInputTraits"/>
                         </searchBar>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CategoryListsCell" rowHeight="130" id="2tp-Ur-YFm" customClass="CategoryListTableViewCell" customModule="FetchRewardsProject" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CategoryListsCell" rowHeight="130" id="2tp-Ur-YFm" customClass="CategoryTableViewCell" customModule="FetchRewardsProject" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="88.5" width="414" height="130"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="2tp-Ur-YFm" id="5eK-gf-rG8">
@@ -73,9 +73,9 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="mealDescriptionLabel" destination="eWt-kJ-hhE" id="vI8-Zf-sgp"/>
-                                    <outlet property="mealImageView" destination="6Zl-ju-h9C" id="Aq6-RX-CXF"/>
-                                    <outlet property="mealNameLabel" destination="6ee-2I-lT3" id="YbF-M2-kyI"/>
+                                    <outlet property="categoryDescriptionLabel" destination="eWt-kJ-hhE" id="vI8-Zf-sgp"/>
+                                    <outlet property="categoryImageView" destination="6Zl-ju-h9C" id="Aq6-RX-CXF"/>
+                                    <outlet property="categoryNameLabel" destination="6ee-2I-lT3" id="YbF-M2-kyI"/>
                                     <segue destination="6p0-un-0Gg" kind="show" identifier="toMealVC" id="f01-g5-d1u"/>
                                 </connections>
                             </tableViewCell>
@@ -85,7 +85,9 @@
                             <outlet property="delegate" destination="aSb-rh-XUx" id="NJF-ut-thP"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="ZRY-oq-HsS"/>
+                    <navigationItem key="navigationItem" id="ZRY-oq-HsS">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="LHC-2a-wTI"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="categorySearchBar" destination="rFJ-Sa-chP" id="KPI-xe-xzn"/>
                     </connections>
@@ -103,8 +105,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="181-WP-FKF">
-                                <rect key="frame" x="20" y="64" width="374" height="26.5"/>
+                                <rect key="frame" x="20" y="130" width="374" height="26.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1QR-Uh-CMt">
+                                <rect key="frame" x="50" y="64" width="314" height="36"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -112,20 +120,24 @@
                         <viewLayoutGuide key="safeArea" id="nSt-w1-mNZ"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="181-WP-FKF" firstAttribute="top" secondItem="1QR-Uh-CMt" secondAttribute="bottom" constant="30" id="KgN-TZ-0wz"/>
+                            <constraint firstItem="1QR-Uh-CMt" firstAttribute="top" secondItem="nSt-w1-mNZ" secondAttribute="top" constant="20" id="Qdp-Uc-Lrv"/>
+                            <constraint firstItem="1QR-Uh-CMt" firstAttribute="leading" secondItem="nSt-w1-mNZ" secondAttribute="leading" constant="50" id="TMV-Jh-RWJ"/>
                             <constraint firstItem="nSt-w1-mNZ" firstAttribute="trailing" secondItem="181-WP-FKF" secondAttribute="trailing" constant="20" id="dI9-If-4Ks"/>
                             <constraint firstItem="181-WP-FKF" firstAttribute="leading" secondItem="nSt-w1-mNZ" secondAttribute="leading" constant="20" id="e6d-Jm-twy"/>
-                            <constraint firstItem="181-WP-FKF" firstAttribute="top" secondItem="nSt-w1-mNZ" secondAttribute="top" constant="20" id="mXR-as-lRt"/>
+                            <constraint firstItem="nSt-w1-mNZ" firstAttribute="trailing" secondItem="1QR-Uh-CMt" secondAttribute="trailing" constant="50" id="mND-Gd-JBF"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="descriptionLabel" destination="181-WP-FKF" id="tE6-gD-P9z"/>
+                        <outlet property="categoryDescriptionLabel" destination="181-WP-FKF" id="tE6-gD-P9z"/>
+                        <outlet property="categoryNameLabel" destination="1QR-Uh-CMt" id="3pl-tw-ATe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hsC-Zc-03S" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="625" y="685"/>
         </scene>
-        <!--Title-->
+        <!--Meal Result Collection View Controller-->
         <scene sceneID="Zyb-hS-hD5">
             <objects>
                 <collectionViewController id="6p0-un-0Gg" customClass="MealResultCollectionViewController" customModule="FetchRewardsProject" customModuleProvider="target" sceneMemberID="viewController">
@@ -184,7 +196,9 @@
                             <outlet property="delegate" destination="6p0-un-0Gg" id="Bg6-7q-lGD"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" title="Title" id="edU-1Q-dDq"/>
+                    <navigationItem key="navigationItem" id="edU-1Q-dDq">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="fVS-fP-3jg"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="navigationLabel" destination="edU-1Q-dDq" id="NhF-4T-H94"/>
                     </connections>
@@ -264,9 +278,10 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Rbw-Aa-9jP">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="RkP-Zg-2il"/>
                         <barButtonItem key="rightBarButtonItem" title="Instructions" id="HV4-k7-Qjl">
                             <connections>
-                                <segue destination="cZ6-Te-esW" kind="presentation" identifier="toInstructionVC" id="ifk-ds-O18"/>
+                                <segue destination="cZ6-Te-esW" kind="show" identifier="toInstructionVC" id="A53-uo-tt7"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -303,11 +318,11 @@
             <objects>
                 <viewController id="cZ6-Te-esW" customClass="MealInstructionsViewController" customModule="FetchRewardsProject" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="6WT-v3-HA9">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7Xb-Fb-0DM">
-                                <rect key="frame" x="0.0" y="-10" width="414" height="862"/>
+                                <rect key="frame" x="0.0" y="78" width="414" height="828"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="j6I-Hi-nza">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="515"/>
@@ -319,7 +334,6 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="414" height="200"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="200" id="Q9z-Kp-jWm"/>
-                                                            <constraint firstAttribute="width" constant="394" id="eFB-PJ-WBA"/>
                                                         </constraints>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Food Name" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ier-tr-Z5m">
@@ -396,11 +410,11 @@
                                     </stackView>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstItem="j6I-Hi-nza" firstAttribute="trailing" secondItem="N8D-lg-buX" secondAttribute="trailing" id="032-VU-YoE"/>
                                     <constraint firstItem="j6I-Hi-nza" firstAttribute="top" secondItem="7Xb-Fb-0DM" secondAttribute="top" id="2pK-Y2-h6c"/>
-                                    <constraint firstItem="j6I-Hi-nza" firstAttribute="leading" secondItem="N8D-lg-buX" secondAttribute="leading" id="I9v-Wq-Vl7"/>
+                                    <constraint firstItem="j6I-Hi-nza" firstAttribute="leading" secondItem="N8D-lg-buX" secondAttribute="leading" id="IHH-eA-G48"/>
                                     <constraint firstAttribute="bottom" secondItem="j6I-Hi-nza" secondAttribute="bottom" constant="40" id="S9D-lv-ol9"/>
                                     <constraint firstItem="j6I-Hi-nza" firstAttribute="top" secondItem="N8D-lg-buX" secondAttribute="top" constant="40" id="bQY-LS-j3i"/>
-                                    <constraint firstItem="N8D-lg-buX" firstAttribute="trailing" secondItem="j6I-Hi-nza" secondAttribute="trailing" id="ec7-6j-CkV"/>
                                 </constraints>
                                 <viewLayoutGuide key="contentLayoutGuide" id="wE3-wv-P1l"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="N8D-lg-buX"/>
@@ -409,21 +423,20 @@
                         <viewLayoutGuide key="safeArea" id="fFf-E8-cpo"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="7Xb-Fb-0DM" firstAttribute="leading" secondItem="fFf-E8-cpo" secondAttribute="leading" id="05P-ZO-pJU"/>
-                            <constraint firstItem="fFf-E8-cpo" firstAttribute="trailing" secondItem="7Xb-Fb-0DM" secondAttribute="trailing" id="2h7-6w-xEh"/>
                             <constraint firstAttribute="bottom" secondItem="7Xb-Fb-0DM" secondAttribute="bottom" constant="-10" id="RTa-oJ-Etc"/>
                             <constraint firstItem="7Xb-Fb-0DM" firstAttribute="width" secondItem="6WT-v3-HA9" secondAttribute="width" id="aF4-Gm-wOe"/>
                             <constraint firstItem="fFf-E8-cpo" firstAttribute="top" secondItem="7Xb-Fb-0DM" secondAttribute="top" constant="10" id="kQk-gD-Rfb"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="xdj-0a-oRe"/>
                     <connections>
                         <outlet property="instructionsLabel" destination="LvZ-cJ-eRP" id="BF4-gz-Wvd"/>
                         <outlet property="mealImageView" destination="fwQ-gg-m9T" id="Of0-BP-X1s"/>
                         <outlet property="mealNameLabel" destination="ier-tr-Z5m" id="dfo-Et-9JE"/>
-                        <outlet property="recipeSourceLabel" destination="Ai6-Nm-8du" id="jrU-pR-0DU"/>
+                        <outlet property="recipeSourceHeaderLabel" destination="Ai6-Nm-8du" id="jrU-pR-0DU"/>
                         <outlet property="sourceLinkLabel" destination="uWt-za-fFV" id="5Qt-KS-wcH"/>
+                        <outlet property="youtubeHeaderLabel" destination="MN8-j0-xFt" id="gNt-EC-Xy2"/>
                         <outlet property="youtubeLinkLabel" destination="TmS-z9-fL3" id="Eaw-iN-dEB"/>
-                        <outlet property="youtubeTutorialLabel" destination="MN8-j0-xFt" id="gNt-EC-Xy2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HTm-YY-eDb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
